@@ -91,6 +91,8 @@
                 <el-button slot="reference" type="primary" size="mini" style="margin-left: 5px"
                            @click="detail(scope.row)">详情
                 </el-button>
+                <el-button slot="reference" type="primary" size="mini" style="margin-left: 5px"
+                           @click="userBook(scope.row)">查看用户来电记录</el-button>
 <!--                <el-button slot="reference" type="primary" size="mini" style="margin-left: 5px"-->
 <!--                           @click="onDownloadRecord(scope.row.id)">下载记录-->
 <!--                </el-button>-->
@@ -311,6 +313,10 @@ export default {
     detail(row) {
       this.detailDialog.data = row
       this.detailDialog.show = true
+    },
+    userBook(row){
+      console.log(row)
+      this.$router.push({name: 'UserPhoneBookLog', query: {phone: row.tel}})
     },
     openDetail() {
       if (this.detailDialog.data.info && this.detailDialog.data.info.hash != '') {

@@ -64,8 +64,16 @@ export const constantRoutes = [
       name: 'UserList',
       component: () => import('@/views/user/list'),
       meta: {title: '用户列表', icon: 'el-icon-user-solid'}
+    }, {
+      path: 'log',
+      name: 'UserPhoneBookLog',
+      component: () => import('@/views/userPhoneBook/list'),
+      meta: {title: '实名来电记录列表', icon: 'el-icon-user-solid'},
+      hidden:true
     }]
   },
+
+
 
 
   {
@@ -88,6 +96,55 @@ export const constantRoutes = [
         name: 'ProviderVerify',
         component: () => import('@/views/provider/info'),
         meta: {title: '软件商审核'}
+      },
+    ]
+  },
+
+  {
+    path: '/userPhoneBook',
+    component: Layout,
+    redirect: '/userPhoneBook/list',
+    meta: {
+      title: '实名来电管理',
+      icon: 'el-icon-truck'
+    },
+    children: [
+      {
+        path: 'list',
+        name: 'UserPhoneBookList',
+        component: () => import('@/views/userPhoneBook/list'),
+        meta: {title: '实名来电联系人列表'}
+      },
+      {
+        path: 'log',
+        name: 'UserPhoneBookLog',
+        component: () => import('@/views/userPhoneBook/log'),
+        meta: {title: '实名来电记录列表'}
+      },
+    ]
+  },
+
+  {
+    path: '/appVersionUpdate',
+    component: Layout,
+    redirect: '/appVersionUpdate/list',
+    meta: {
+      title: 'app版本更新',
+      icon: 'el-icon-truck'
+    },
+    children: [
+      {
+        path: 'list',
+        name: 'AppVersionUpdateList',
+        component: () => import('@/views/appVersionUpdate/list'),
+        meta: {title: 'app版本列表'}
+      },
+      {
+        path: 'add',
+        name: 'AppVersionUpdateAdd',
+        component: () => import('@/views/appVersionUpdate/add'),
+        meta: {title: '新增'},
+        hidden: true
       },
     ]
   },
